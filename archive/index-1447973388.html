@@ -1,0 +1,201 @@
+<html contenteditable="true"><head>
+<title>Aquaponics</title>   
+<script>
+// function remove(sel) {
+//   var elements = document.querySelectorAll(sel);
+//   for (var i = 0; i < elements.length; i++) {
+//     while(elements.length > 0){
+//       elements[0].parentNode.removeChild(elements[0]);
+//     }
+//   }
+// }
+
+// if (window.location.protocol.includes("file")) {
+//   remove("script:not(:first-child)")
+//   remove("link")
+//   remove("img")
+// }
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="grain.ico" rel="shortcut icon" type="image/x-icon">
+<script src="http://code.jquery.com/jquery-2.1.4.js"></script><style type="text/css"></style>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="url.js"></script>
+<script src="$_GET.js"></script>
+<script src="file.js"></script>
+<script src="//cdn.rawgit.com/namuol/cheet.js/master/cheet.min.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- <tag autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/> -->
+<style>
+iframe, .jumbotron, img {
+  border-radius: 10px;
+}
+.glyphicon {
+  vertical-align: text-top !important;
+}
+#about li:before {
+  content: "\e064";
+  font-family: 'Glyphicons Halflings';
+  font-size: 9px;
+  float: left;
+  margin-top: 4px;
+  margin-left: 8px;
+  margin-right: 17px;
+  color: #CCCCCC;
+}
+.media, .media-body {
+  overflow: initial !important; 
+}
+.server {
+  display: none;
+}
+</style>
+<script>
+if (window.location.protocol.includes("http")) {
+  $.post("api.php", {}, function(d) {
+    $(".server").remove(); 
+    $("body").after(d)
+  }, "html")
+}
+MutationObserver = window.MutationObserver || window.WebKitMutationObserver
+var log = console.log.bind(console)
+
+$(function() {
+  var observer = new MutationObserver(function(mutations, observer) {
+    if (window.location.protocol.includes("http")) {
+      $.post("api.php", {mode: "write", handle:"index.html", content: $("html")[0].outerHTML, debug: true}, function(d) {log(mutations, Date.now())})
+    }
+  })
+  observer.observe(document.body, {
+    subtree: true,
+    childList: true,
+    attributes: true,
+    characterData: true
+  })
+  // $("*")
+  // .draggable({
+  //   revert: true, 
+  //   snap: true
+  // })
+  // .droppable()
+  // .resizable()
+  cheet('↑ ↑ ↓ ↓ ← → ← → b a', function () {
+    $(".server").show()
+  });
+})
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation">
+            <a href="#home" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+          </li>
+          <li role="presentation">
+            <a href="#about" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-picture"></span>&nbsp;About</a>
+          </li>
+          <li role="presentation">
+            <a href="#whoweare" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-user"></span>&nbsp;Who We Are</a>
+          </li>
+          <li role="presentation" class="active">
+            <a href="#contact" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-flash"></span>&nbsp;Contact</a>
+          </li>
+          <li role="presentation">
+            <a href="#order" role="tab" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span>&nbsp;Order Here</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <h3 class="text-muted">
+    <span class="glyphicon glyphicon-grain"></span> Aquapon</h3>
+    <hr>
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane" id="home"> 
+        <div class="jumbotron">
+          <h1>Aquapon <small>Food for the Future</small></h1>
+          <p class="lead"><em>a system of aquaculture in which the waste produced by farmed fish or other aquatic animals supplies nutrients for plants grown hydroponically, which in turn purify the water.</em></p>
+          <p>Aquaponics is here to supply a large number of people with fresh organic foods for less money.</p>
+          <p>Here at aquaponics, we pride ourselves on our efficiency and dedication. </p>
+          <p><a class="btn btn-lg btn-success" href="#" role="button"><span class="glyphicon glyphicon-globe"></span>&nbsp;Order Here</a></p>
+        </div>
+        <div class="row marketing">
+          <div class="col-lg-6">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JeoYHWLC9Tc" frameborder="0" allowfullscreen=""></iframe>
+          </div>
+          <div class="col-lg-6">
+            <img src="download.jpg" width="560" height="315">
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="whoweare">
+        <div class="well">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTExOGFkYzBjZiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTE4YWRjMGNmIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><span class="label label-primary">Genecarlo Veno</span></h4>
+              <p>Genecarlo Veno is a student at Harrisburg University who is a founder of Aquapon. He is currently in his third year of the MEBA program. He always does what he can to help others out, believing Aquapon to be yet another way of doing so.</p>
+            </div>
+          </div>
+        </div>
+        <div class="well">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTExOGFkYzBjZiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTE4YWRjMGNmIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><span class="label label-primary">Robert Enck</span></h4>
+              <p>Robert is Aquapon's co-founder. He received his associate degree in Business Management from HACC's Lancaster campus and strives to create healthy food.</p>
+            </div>
+          </div>
+        </div>
+        <div class="well">
+          <div class="media">
+            <div class="media-left">
+              <a href="#">
+                <img class="media-object" data-src="holder.js/64x64" alt="64x64" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+PCEtLQpTb3VyY2UgVVJMOiBob2xkZXIuanMvNjR4NjQKQ3JlYXRlZCB3aXRoIEhvbGRlci5qcyAyLjYuMC4KTGVhcm4gbW9yZSBhdCBodHRwOi8vaG9sZGVyanMuY29tCihjKSAyMDEyLTIwMTUgSXZhbiBNYWxvcGluc2t5IC0gaHR0cDovL2ltc2t5LmNvCi0tPjxkZWZzPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+PCFbQ0RBVEFbI2hvbGRlcl8xNTExOGFkYzBjZiB0ZXh0IHsgZmlsbDojQUFBQUFBO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1mYW1pbHk6QXJpYWwsIEhlbHZldGljYSwgT3BlbiBTYW5zLCBzYW5zLXNlcmlmLCBtb25vc3BhY2U7Zm9udC1zaXplOjEwcHQgfSBdXT48L3N0eWxlPjwvZGVmcz48ZyBpZD0iaG9sZGVyXzE1MTE4YWRjMGNmIj48cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIGZpbGw9IiNFRUVFRUUiLz48Zz48dGV4dCB4PSIxNC41IiB5PSIzNi41Ij42NHg2NDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==" data-holder-rendered="true" style="width: 64px; height: 64px;">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><span class="label label-primary">Taj "Mahal" McClendon</span></h4>
+              <p>Taj is a senior at Steelton High School, participating in a cooperative program with Harrisburg University. He is dedicated to finding new and innovative ways to make Aquapon the best hydroponics business it can be.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="about"> 
+        <ul class="list-group">
+          <li class="list-group-item">AquaPon is a cutting edge aquaponics food producing company.</li>
+          <li class="list-group-item">AquaPon produces high quality food to consumers for the lowest possible cost.</li>
+          <li class="list-group-item">AquaPon is committed to staying on the cutting edge of the aquaponics food production industry at the lowest possible cost to consumers.</li>
+          <li class="list-group-item">AquaPon is also a leader in environmental and consumer protection.</li>
+          <li class="list-group-item">AquaPon utilizes quality information systems to grow and thrive in an ever-competitive business environment.</li>
+        </ul>
+        <img src="Aquaponics-System.jpg">
+      </div>
+      <div role="tabpanel" class="tab-pane active" id="contact"><span style="line-height: 1.42857;">To find out more about our product or to volunteer, pleasure contact us at </span><span class="glyphicon glyphicon-earphone text-danger"></span><span style="line-height: 1.42857;">&nbsp;</span><a href="tel:17176432776" style="line-height: 1.42857; background-color: rgb(255, 255, 255);">717-643-2776</a><span style="line-height: 1.42857;">, or </span><span class="glyphicon glyphicon-envelope text-danger"></span><span style="line-height: 1.42857;">&nbsp;</span><a href="mailto:team@aquapon.com" style="line-height: 1.42857; background-color: rgb(255, 255, 255);">team@aquapon.com</a></div>
+      <div role="tabpanel" class="tab-pane" id="order">  
+        Coming soon...
+      </div>
+    </div>
+    <hr>
+    <footer class="footer">
+      <p>2015 Aquapon, Inc.</p>
+    </footer>
+  </div>
+
+</body><table class="server"><tbody><tr><th>content_length</th><td>0</td></tr><tr><th>dh_user</th><td>matthewmorrone</td></tr><tr><th>document_root</th><td>/home/matthewmorrone/matthewmorrone.com</td></tr><tr><th>ds_id_24694982</th><td></td></tr><tr><th>dsid</th><td>24694982</td></tr><tr><th>fcgi_role</th><td>RESPONDER</td></tr><tr><th>gateway_interface</th><td>CGI/1.1</td></tr><tr><th>http_accept</th><td>text/html, */*; q=0.01</td></tr><tr><th>http_accept_encoding</th><td>gzip, deflate</td></tr><tr><th>http_accept_language</th><td>en-US,en;q=0.8,fr-FR;q=0.6,fr;q=0.4</td></tr><tr><th>http_cache_control</th><td>no-cache</td></tr><tr><th>http_connection</th><td>close</td></tr><tr><th>http_dnt</th><td>1</td></tr><tr><th>http_host</th><td>matthewmorrone.com</td></tr><tr><th>http_origin</th><td>http://matthewmorrone.com</td></tr><tr><th>http_pragma</th><td>no-cache</td></tr><tr><th>http_referer</th><td>http://matthewmorrone.com/aquaponics/</td></tr><tr><th>http_user_agent</th><td>Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.58 Safari/537.36</td></tr><tr><th>http_x_requested_with</th><td>XMLHttpRequest</td></tr><tr><th>path</th><td>/bin:/usr/bin:/sbin:/usr/sbin</td></tr><tr><th>php_self</th><td>/aquaponics/api.php</td></tr><tr><th>query_string</th><td></td></tr><tr><th>rails_env</th><td>production</td></tr><tr><th>remote_addr</th><td>207.218.103.2</td></tr><tr><th>remote_port</th><td>9140</td></tr><tr><th>request_method</th><td>POST</td></tr><tr><th>request_time</th><td>1447973387</td></tr><tr><th>request_time_float</th><td>1447973387.2892</td></tr><tr><th>request_uri</th><td>/aquaponics/api.php</td></tr><tr><th>script_filename</th><td>/home/matthewmorrone/matthewmorrone.com/aquaponics/api.php</td></tr><tr><th>script_name</th><td>/aquaponics/api.php</td></tr><tr><th>script_uri</th><td>http://matthewmorrone.com/aquaponics/api.php</td></tr><tr><th>script_url</th><td>/aquaponics/api.php</td></tr><tr><th>server_addr</th><td>208.97.179.137</td></tr><tr><th>server_admin</th><td>webmaster@matthewmorrone.com</td></tr><tr><th>server_name</th><td>matthewmorrone.com</td></tr><tr><th>server_port</th><td>80</td></tr><tr><th>server_protocol</th><td>HTTP/1.1</td></tr><tr><th>server_signature</th><td></td></tr><tr><th>server_software</th><td>Apache</td></tr><tr><th>unique_id</th><td>Vk5SC9Bx2aQAAALFaV4AAAAK</td></tr>	<tr><th>ip</th><td>207.218.103.2</td></tr>
+	<tr><th>ipv4</th><td>207.218.103.2</td></tr>
+	<tr><th>ipv6</th><td>3487196930</td></tr>
+	</tbody></table></html><table class='server'><tr><th>content_length</th><td>18396</td></tr><tr><th>content_type</th><td>application/x-www-form-urlencoded; charset=UTF-8</td></tr><tr><th>dh_user</th><td>matthewmorrone</td></tr><tr><th>document_root</th><td>/home/matthewmorrone/matthewmorrone.com</td></tr><tr><th>ds_id_24694982</th><td></td></tr><tr><th>dsid</th><td>24694982</td></tr><tr><th>fcgi_role</th><td>RESPONDER</td></tr><tr><th>gateway_interface</th><td>CGI/1.1</td></tr><tr><th>http_accept</th><td>*/*</td></tr><tr><th>http_accept_encoding</th><td>gzip, deflate</td></tr><tr><th>http_accept_language</th><td>en-US,en;q=0.8,fr-FR;q=0.6,fr;q=0.4</td></tr><tr><th>http_cache_control</th><td>no-cache</td></tr><tr><th>http_connection</th><td>close</td></tr><tr><th>http_dnt</th><td>1</td></tr><tr><th>http_host</th><td>matthewmorrone.com</td></tr><tr><th>http_origin</th><td>http://matthewmorrone.com</td></tr><tr><th>http_pragma</th><td>no-cache</td></tr><tr><th>http_referer</th><td>http://matthewmorrone.com/aquaponics/</td></tr><tr><th>http_user_agent</th><td>Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.58 Safari/537.36</td></tr><tr><th>http_x_requested_with</th><td>XMLHttpRequest</td></tr><tr><th>path</th><td>/bin:/usr/bin:/sbin:/usr/sbin</td></tr><tr><th>php_self</th><td>/aquaponics/api.php</td></tr><tr><th>query_string</th><td></td></tr><tr><th>rails_env</th><td>production</td></tr><tr><th>remote_addr</th><td>207.218.103.2</td></tr><tr><th>remote_port</th><td>9138</td></tr><tr><th>request_method</th><td>POST</td></tr><tr><th>request_time</th><td>1447973388</td></tr><tr><th>request_time_float</th><td>1447973388.0387</td></tr><tr><th>request_uri</th><td>/aquaponics/api.php</td></tr><tr><th>script_filename</th><td>/home/matthewmorrone/matthewmorrone.com/aquaponics/api.php</td></tr><tr><th>script_name</th><td>/aquaponics/api.php</td></tr><tr><th>script_uri</th><td>http://matthewmorrone.com/aquaponics/api.php</td></tr><tr><th>script_url</th><td>/aquaponics/api.php</td></tr><tr><th>server_addr</th><td>208.97.179.137</td></tr><tr><th>server_admin</th><td>webmaster@matthewmorrone.com</td></tr><tr><th>server_name</th><td>matthewmorrone.com</td></tr><tr><th>server_port</th><td>80</td></tr><tr><th>server_protocol</th><td>HTTP/1.1</td></tr><tr><th>server_signature</th><td></td></tr><tr><th>server_software</th><td>Apache</td></tr><tr><th>unique_id</th><td>Vk5SC9Bx2aQAABbT0SsAAAAM</td></tr>	<tr><th>ip</th><td>207.218.103.2</td></tr>
+	<tr><th>ipv4</th><td>207.218.103.2</td></tr>
+	<tr><th>ipv6</th><td>3487196930</td></tr>
+	</table>
